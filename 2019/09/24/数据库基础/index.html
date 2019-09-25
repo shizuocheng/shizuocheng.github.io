@@ -9,17 +9,17 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1crate user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
+  <meta name="description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Database basics part 1">
 <meta property="og:url" content="http://yoursite.com/2019/09/24/数据库基础/index.html">
 <meta property="og:site_name" content="漫步Dog">
-<meta property="og:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1crate user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
+<meta property="og:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-25T15:55:43.784Z">
+<meta property="og:updated_time" content="2019-09-25T16:01:27.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Database basics part 1">
-<meta name="twitter:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1crate user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
+<meta name="twitter:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
   
     <link rel="alternative" href="/atom.xml" title="漫步Dog" type="application/atom+xml">
   
@@ -218,12 +218,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="2019-9-24——The-Oracle-base"><a href="#2019-9-24——The-Oracle-base" class="headerlink" title="2019/9/24——The Oracle base"></a>2019/9/24——The Oracle base</h2><h3 id="一、增加user、分配权限"><a href="#一、增加user、分配权限" class="headerlink" title="一、增加user、分配权限"></a>一、增加user、分配权限</h3><p>1.连接管理员账户<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect system/&lt;管理员密码&gt;;</span><br></pre></td></tr></table></figure></p>
-<p>2.增加user语句<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">crate user &lt;用户名&gt; identified &lt;密码&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>2.增加user语句<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user &lt;用户名&gt; identified &lt;密码&gt;;</span><br></pre></td></tr></table></figure></p>
 <p>3.赋给user权限<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant connect,resource to &lt;用户名&gt;;</span><br></pre></td></tr></table></figure></p>
 <p>4.连接用户<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect &lt;用户名&gt;/&lt;密码&gt;;</span><br></pre></td></tr></table></figure></p>
 <hr>
 <a id="more"></a>
-<h3 id="二、建表"><a href="#二、建表" class="headerlink" title="二、建表"></a>二、建表</h3><p>1.建立关系表(此处以学生表为例)<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">creat table Student</span><br><span class="line">(</span><br><span class="line">    sid char(4) primary key,  //学号设置为主键</span><br><span class="line">    sname varchar(10),</span><br><span class="line">    sdept varchar(10),</span><br><span class="line">    sage number(2)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<h3 id="二、建表"><a href="#二、建表" class="headerlink" title="二、建表"></a>二、建表</h3><p>1.建立关系表(此处以学生表为例)<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table Student</span><br><span class="line">(</span><br><span class="line">    sid char(4) primary key,  //学号设置为主键</span><br><span class="line">    sname varchar(10),</span><br><span class="line">    sdept varchar(10),</span><br><span class="line">    sage number(2)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
 <hr>
 <h3 id="三、对表中数据进行增加、删除、更新"><a href="#三、对表中数据进行增加、删除、更新" class="headerlink" title="三、对表中数据进行增加、删除、更新"></a>三、对表中数据进行增加、删除、更新</h3><p>1.增加数据<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">insert into Student values(&apos;1001&apos;,&apos;szc&apos;,&apos;SE&apos;,19);</span><br><span class="line">insert into Student values(&apos;1002&apos;,&apos;qgl&apos;,&apos;SE&apos;,20);</span><br><span class="line">insert into Student values(&apos;1003&apos;,&apos;xjl&apos;,&apos;SE&apos;,19);</span><br><span class="line">insert into Student values(&apos;1004&apos;,&apos;lxc&apos;,&apos;SE&apos;,21);</span><br></pre></td></tr></table></figure></p>
 <p>2.修改数据<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">update &lt;表名&gt;</span><br><span class="line">set &lt;列名&gt;=&lt;表达式&gt;</span><br><span class="line">[where &lt;条件&gt;];     //此处where语句可用可不用，若不用即对整个表中的信息进行集中操作，同时where进行筛选时，可以是复杂的select嵌套语句</span><br><span class="line"></span><br><span class="line">//此处简单列举一例，将名为szc的年龄增加一岁。</span><br><span class="line">update Student</span><br><span class="line">set sage+1</span><br><span class="line">where sname = &apos;szc&apos;;</span><br></pre></td></tr></table></figure></p>
