@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="漫步Dog">
 <meta property="og:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-25T16:01:27.750Z">
+<meta property="og:updated_time" content="2019-09-26T02:32:39.810Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Database basics part 1">
 <meta name="twitter:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
@@ -33,6 +33,10 @@
   <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
   <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
 
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("your_app_id", "your_app_key");</script>
+<script src="/js/Counter.js"></script>
   
 </head></html>
 <body>
@@ -113,6 +117,12 @@
 					<nav class="header-nav">
 						<div class="social">
 							
+								<a class="weibo" target="_blank" href="https://weibo.com/6036131467/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="qq" target="_blank" href="https://www.shizuocheng.top/shi" title="qq">qq</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
 						</div>
 					</nav>
 				</section>
@@ -129,7 +139,7 @@
 				<section class="switch-part switch-part3">
 					<div id="js-friends">
 					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.shizuocheng.top/shi/">smackdown</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.shizuocheng.top/shi/">Website</a>
 			        
 			        </div>
 				</section>
@@ -139,7 +149,7 @@
 				
 				<section class="switch-part switch-part4">
 				
-					<div id="js-aboutme">true</div>
+					<div id="js-aboutme">小菜狗一枚&lt;br&gt; &lt;br&gt; 这个网站只是个人学习笔记，如有错误欢迎指点。</div>
 				</section>
 				
 			</div>
@@ -177,6 +187,12 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="weibo" target="_blank" href="https://weibo.com/6036131467/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="qq" target="_blank" href="https://www.shizuocheng.top/shi" title="qq">qq</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
 				</div>
 			</nav>
 		</header>				
@@ -211,6 +227,16 @@
         
 
         
+          
+<div class="counter-tag counter">
+    <span id="/2019/09/24/数据库基础/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Database basics part 1">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
         <div class="clearfix"></div>
       </div>
       
@@ -227,7 +253,7 @@
 <hr>
 <h3 id="三、对表中数据进行增加、删除、更新"><a href="#三、对表中数据进行增加、删除、更新" class="headerlink" title="三、对表中数据进行增加、删除、更新"></a>三、对表中数据进行增加、删除、更新</h3><p>1.增加数据<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">insert into Student values(&apos;1001&apos;,&apos;szc&apos;,&apos;SE&apos;,19);</span><br><span class="line">insert into Student values(&apos;1002&apos;,&apos;qgl&apos;,&apos;SE&apos;,20);</span><br><span class="line">insert into Student values(&apos;1003&apos;,&apos;xjl&apos;,&apos;SE&apos;,19);</span><br><span class="line">insert into Student values(&apos;1004&apos;,&apos;lxc&apos;,&apos;SE&apos;,21);</span><br></pre></td></tr></table></figure></p>
 <p>2.修改数据<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">update &lt;表名&gt;</span><br><span class="line">set &lt;列名&gt;=&lt;表达式&gt;</span><br><span class="line">[where &lt;条件&gt;];     //此处where语句可用可不用，若不用即对整个表中的信息进行集中操作，同时where进行筛选时，可以是复杂的select嵌套语句</span><br><span class="line"></span><br><span class="line">//此处简单列举一例，将名为szc的年龄增加一岁。</span><br><span class="line">update Student</span><br><span class="line">set sage+1</span><br><span class="line">where sname = &apos;szc&apos;;</span><br></pre></td></tr></table></figure></p>
-<p>3.删除数据<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//此处删除数据是指删除一条信息(一个元祖或多个元祖的值)，要和删掉表格的行列等区分开，删掉表格的行列等是改变表的格式，要使用alter语句进行操作，后续会提到</span><br><span class="line">//此处简单列举一例，删除学号为1001的学生信息</span><br><span class="line">delete </span><br><span class="line">from Student</span><br><span class="line">where sid = &apos;1001&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>3.删除数据<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//此处删除数据是指删除一条信息(一个元组或多个元组的值)，要和删掉表格的行列等区分开，删掉表格的行列等是改变表的格式，要使用alter语句进行操作，后续会提到</span><br><span class="line">//此处简单列举一例，删除学号为1001的学生信息</span><br><span class="line">delete </span><br><span class="line">from Student</span><br><span class="line">where sid = &apos;1001&apos;;</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -248,21 +274,6 @@
   
 </article>
 
-
-<div class="ds-share share" data-thread-key="数据库基础" data-title="Database basics part 1" data-url="http://yoursite.com/2019/09/24/数据库基础/"  data-images="/img/author.jpg" data-content="Database basics part 1">
-    <div class="ds-share-inline">
-      <ul  class="ds-share-icons-16">
-      	<li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
-        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
-        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
-        <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
-        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
-      </ul>
-      <div class="ds-share-icons-more">
-      </div>
-    </div>
- </div>
- 
 
 
 
