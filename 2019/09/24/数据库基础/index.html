@@ -9,17 +9,17 @@
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
+  <meta name="description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified by &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Database basics part 1">
 <meta property="og:url" content="http://yoursite.com/2019/09/24/数据库基础/index.html">
 <meta property="og:site_name" content="漫步Dog">
-<meta property="og:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
+<meta property="og:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified by &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-09-26T02:32:39.810Z">
+<meta property="og:updated_time" content="2019-09-27T04:39:44.926Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Database basics part 1">
-<meta name="twitter:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接用户">
+<meta name="twitter:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified by &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接">
   
     <link rel="alternative" href="/atom.xml" title="漫步Dog" type="application/atom+xml">
   
@@ -244,7 +244,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="2019-9-24——The-Oracle-base"><a href="#2019-9-24——The-Oracle-base" class="headerlink" title="2019/9/24——The Oracle base"></a>2019/9/24——The Oracle base</h2><h3 id="一、增加user、分配权限"><a href="#一、增加user、分配权限" class="headerlink" title="一、增加user、分配权限"></a>一、增加user、分配权限</h3><p>1.连接管理员账户<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect system/&lt;管理员密码&gt;;</span><br></pre></td></tr></table></figure></p>
-<p>2.增加user语句<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user &lt;用户名&gt; identified &lt;密码&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>2.增加user语句<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user &lt;用户名&gt; identified by &lt;密码&gt;;</span><br></pre></td></tr></table></figure></p>
 <p>3.赋给user权限<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant connect,resource to &lt;用户名&gt;;</span><br></pre></td></tr></table></figure></p>
 <p>4.连接用户<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect &lt;用户名&gt;/&lt;密码&gt;;</span><br></pre></td></tr></table></figure></p>
 <hr>
