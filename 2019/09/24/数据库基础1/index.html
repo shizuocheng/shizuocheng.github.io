@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Database basics part 1 | 漫步Dog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified by &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Database basics part 1">
+<meta property="og:url" content="http://yoursite.com/2019/09/24/数据库基础1/index.html">
+<meta property="og:site_name" content="漫步Dog">
+<meta property="og:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified by &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-27T04:39:44.926Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Database basics part 1">
+<meta name="twitter:description" content="2019/9/24——The Oracle base一、增加user、分配权限1.连接管理员账户  1connect system/&amp;lt;管理员密码&amp;gt;; 2.增加user语句  1create user &amp;lt;用户名&amp;gt; identified by &amp;lt;密码&amp;gt;; 3.赋给user权限  1grant connect,resource to &amp;lt;用户名&amp;gt;; 4.连接">
+  
+    <link rel="alternative" href="/atom.xml" title="漫步Dog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("your_app_id", "your_app_key");</script>
+<script src="/js/Counter.js"></script>
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Shi Zuocheng</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Shi zuocheng&#39;s personal blog</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="weibo" target="_blank" href="https://weibo.com/6036131467/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="qq" target="_blank" href="https://www.shizuocheng.top/shi" title="qq">qq</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.shizuocheng.top/shi/">Website</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">小菜狗一枚&lt;br&gt; &lt;br&gt; 这个网站只是个人学习笔记，如有错误欢迎指点。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Shi Zuocheng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/author.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Shi Zuocheng</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Shi zuocheng&#39;s personal blog</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="weibo" target="_blank" href="https://weibo.com/6036131467/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="qq" target="_blank" href="https://www.shizuocheng.top/shi" title="qq">qq</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-数据库基础1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/24/数据库基础1/" class="article-date">
+  	<time datetime="2019-09-24T12:26:45.000Z" itemprop="datePublished">2019-09-24</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Database basics part 1
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2019/09/24/数据库基础1/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Database basics part 1">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="2019-9-24——The-Oracle-base"><a href="#2019-9-24——The-Oracle-base" class="headerlink" title="2019/9/24——The Oracle base"></a>2019/9/24——The Oracle base</h2><h3 id="一、增加user、分配权限"><a href="#一、增加user、分配权限" class="headerlink" title="一、增加user、分配权限"></a>一、增加user、分配权限</h3><p>1.连接管理员账户<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect system/&lt;管理员密码&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>2.增加user语句<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create user &lt;用户名&gt; identified by &lt;密码&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>3.赋给user权限<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grant connect,resource to &lt;用户名&gt;;</span><br></pre></td></tr></table></figure></p>
+<p>4.连接用户<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect &lt;用户名&gt;/&lt;密码&gt;;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<a id="more"></a>
+<h3 id="二、建表"><a href="#二、建表" class="headerlink" title="二、建表"></a>二、建表</h3><p>1.建立关系表(此处以学生表为例)<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">create table Student</span><br><span class="line">(</span><br><span class="line">    sid char(4) primary key,  //学号设置为主键</span><br><span class="line">    sname varchar(10),</span><br><span class="line">    sdept varchar(10),</span><br><span class="line">    sage number(2)</span><br><span class="line">);</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="三、对表中数据进行增加、删除、更新"><a href="#三、对表中数据进行增加、删除、更新" class="headerlink" title="三、对表中数据进行增加、删除、更新"></a>三、对表中数据进行增加、删除、更新</h3><p>1.增加数据<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">insert into Student values(&apos;1001&apos;,&apos;szc&apos;,&apos;SE&apos;,19);</span><br><span class="line">insert into Student values(&apos;1002&apos;,&apos;qgl&apos;,&apos;SE&apos;,20);</span><br><span class="line">insert into Student values(&apos;1003&apos;,&apos;xjl&apos;,&apos;SE&apos;,19);</span><br><span class="line">insert into Student values(&apos;1004&apos;,&apos;lxc&apos;,&apos;SE&apos;,21);</span><br></pre></td></tr></table></figure></p>
+<p>2.修改数据<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">update &lt;表名&gt;</span><br><span class="line">set &lt;列名&gt;=&lt;表达式&gt;</span><br><span class="line">[where &lt;条件&gt;];     //此处where语句可用可不用，若不用即对整个表中的信息进行集中操作，同时where进行筛选时，可以是复杂的select嵌套语句</span><br><span class="line"></span><br><span class="line">//此处简单列举一例，将名为szc的年龄增加一岁。</span><br><span class="line">update Student</span><br><span class="line">set sage+1</span><br><span class="line">where sname = &apos;szc&apos;;</span><br></pre></td></tr></table></figure></p>
+<p>3.删除数据<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//此处删除数据是指删除一条信息(一个元组或多个元组的值)，要和删掉表格的行列等区分开，删掉表格的行列等是改变表的格式，要使用alter语句进行操作，后续会提到</span><br><span class="line">//此处简单列举一例，删除学号为1001的学生信息</span><br><span class="line">delete </span><br><span class="line">from Student</span><br><span class="line">where sid = &apos;1001&apos;;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/09/26/数据库基础2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">&lt;</strong>
+      <div class="article-nav-title">
+        
+          Database basics part 2
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/09/23/Change my blog theme/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Update my personal blog topics</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 Shi Zuocheng
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
