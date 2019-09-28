@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>PHP实现将网页输入信息存入Mysql数据库 | 漫步Dog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="HTML网页实现用户输入&amp;emsp;&amp;emsp;具体网页框架和美化元素这里不一一描述，直接写主题内容。 一、假设有一个报名网站，需要用户输入学号姓名和个人简介，具体body中的input代码如下：  123&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;name&amp;quot; /&amp;gt;     // 输入姓名&amp;lt;input type=&amp;quot;text&amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP实现将网页输入信息存入Mysql数据库">
+<meta property="og:url" content="http://yoursite.com/2019/09/28/网页纳新网站的实现/index.html">
+<meta property="og:site_name" content="漫步Dog">
+<meta property="og:description" content="HTML网页实现用户输入&amp;emsp;&amp;emsp;具体网页框架和美化元素这里不一一描述，直接写主题内容。 一、假设有一个报名网站，需要用户输入学号姓名和个人简介，具体body中的input代码如下：  123&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;name&amp;quot; /&amp;gt;     // 输入姓名&amp;lt;input type=&amp;quot;text&amp;qu">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-09-28T15:52:53.442Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PHP实现将网页输入信息存入Mysql数据库">
+<meta name="twitter:description" content="HTML网页实现用户输入&amp;emsp;&amp;emsp;具体网页框架和美化元素这里不一一描述，直接写主题内容。 一、假设有一个报名网站，需要用户输入学号姓名和个人简介，具体body中的input代码如下：  123&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;name&amp;quot; /&amp;gt;     // 输入姓名&amp;lt;input type=&amp;quot;text&amp;qu">
+  
+    <link rel="alternative" href="/atom.xml" title="漫步Dog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("your_app_id", "your_app_key");</script>
+<script src="/js/Counter.js"></script>
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Shi Zuocheng</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Shi zuocheng&#39;s personal blog</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="weibo" target="_blank" href="https://weibo.com/6036131467/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="qq" target="_blank" href="https://www.shizuocheng.top/shi" title="qq">qq</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.shizuocheng.top/shi/">Website</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">小菜狗一枚&lt;br&gt; &lt;br&gt; 这个网站只是个人学习笔记，如有错误欢迎指点。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Shi Zuocheng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/author.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Shi Zuocheng</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Shi zuocheng&#39;s personal blog</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="weibo" target="_blank" href="https://weibo.com/6036131467/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="qq" target="_blank" href="https://www.shizuocheng.top/shi" title="qq">qq</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-网页纳新网站的实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/09/28/网页纳新网站的实现/" class="article-date">
+  	<time datetime="2019-09-28T14:26:45.000Z" itemprop="datePublished">2019-09-28</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP实现将网页输入信息存入Mysql数据库
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2019/09/28/网页纳新网站的实现/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="PHP实现将网页输入信息存入Mysql数据库">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTML网页实现用户输入"><a href="#HTML网页实现用户输入" class="headerlink" title="HTML网页实现用户输入"></a>HTML网页实现用户输入</h2><p>&emsp;&emsp;具体网页框架和美化元素这里不一一描述，直接写主题内容。</p>
+<p>一、假设有一个报名网站，需要用户输入学号姓名和个人简介，具体body中的input代码如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;text&quot; id=&quot;name&quot; /&gt;     // 输入姓名</span><br><span class="line">&lt;input type=&quot;text&quot; id=&quot;num&quot; /&gt;      // 输入学号</span><br><span class="line">&lt;input type=&quot;text&quot; id=&quot;intro&quot; /&gt;    // 输入个人简介</span><br></pre></td></tr></table></figure></p>
+<p>二、 在用户输入之后肯定会设置一个提交按钮，在input上放入onclick事件属性，具体实现如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;input type=&quot;submit&quot; id=&quot;sub&quot; onclick=&quot;sub();&quot; /&gt;        //设置sub()点击事件</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>三、 定义sub()函数体</p>
+<p>&emsp;（一）、 将输入的name、num、intro获取 </p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var name = document.getElementById(&quot;name&quot;);</span><br><span class="line">var num = document.getElementById(&quot;num&quot;)</span><br><span class="line">var intro = document.getElementById(&quot;intro&quot;)</span><br><span class="line"></span><br><span class="line">// 这里有必要说一下，input中若使用的是id属性要用getElementById来获取输入信息；input若是用name属性获取则需要用document.getElementsByName来获取。</span><br><span class="line">// 一定要搞清楚，当时我就在这里踩了坑，此篇blog统一使用ById，以后会有专门的blog介绍ByName和ById的区别。</span><br></pre></td></tr></table></figure>
+
+<p>&emsp; （二）、 处理输入信息为空的情况</p>
+<p>&emsp;&emsp;因为大背景是一个报名网站，所以输入的姓名学号不能为空，若为空要对用户进行提示让其重新输入。实现代码如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 代码很好理解，不作敖述</span><br><span class="line">if (name.value == &quot;&quot; || name.value == undefined) &#123;</span><br><span class="line"> mui.alert(&quot;姓名没有填写&quot;, &quot;抱歉&quot;, &quot;返回重填&quot;)</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line">if (num.value == &quot;&quot; || num.value == undefined) &#123;</span><br><span class="line"> mui.alert(&quot;学号没有填写&quot;, &quot;抱歉&quot;, &quot;返回重填&quot;)</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;（三）、 给baoming.php文件发送输入信息</p>
+<p>&emsp;&emsp;此部分是html和php交互的核心部分<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">   // 在http.post中第一个&#123;&#125;中写入baoming.php的url和发送的data信息，第二个是一个匿名函数</span><br><span class="line">   http.post(&#123; url: &quot;api/baoming.php&quot;, data: &quot;name=&quot; + name.value + &quot;&amp;num=&quot; + num.value + &quot;&amp;intro=&quot; + intro.value &#125;, function (err, result) &#123;</span><br><span class="line">       //baoming.php中会对结果进行处理，通过返回的result的值提示用户具体信息。</span><br><span class="line">	if (result == &quot;0&quot;) &#123;          </span><br><span class="line">		alert(&quot;报名成功&quot;)</span><br><span class="line">	&#125; else if (result == &quot;1&quot;) &#123;</span><br><span class="line">		alert(&quot;已报名&quot;)</span><br><span class="line">	&#125; else &#123;</span><br><span class="line">		mui.alert(&quot;报名失败&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;（四）、 关于mui.js文件和tool.js文件</p>
+<p>&emsp;&emsp;mui.js和tool.js是公共代码库文件，会用即可。</p>
+<p>&emsp;&emsp;在body开头放入一段代码引入miu.js、完成mui.init函数，代码如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;js/mui.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt; mui.init() &lt;/script&gt; </span><br><span class="line">&lt;script src=&quot;js/tool.js&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="connect-php文件的实现"><a href="#connect-php文件的实现" class="headerlink" title="connect.php文件的实现"></a>connect.php文件的实现</h2><p>&emsp;&emsp;connect.php主要完成对数据库的连接</p>
+<p>一、首先定义一个mysql_conf数组存放服务器的地址，用户名和密码，代码如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$mysql_conf = array(</span><br><span class="line">  &apos;host&apos;    =&gt; &apos;127.0.0.1&apos;,     // 127.0.0.1为本机IP位置</span><br><span class="line">  &apos;db&apos;      =&gt; &apos;student&apos;,       // 要连接到的本地数据库名</span><br><span class="line">  &apos;db_user&apos; =&gt; &apos;root&apos;,          // 连接的用户名</span><br><span class="line">  &apos;db_pwd&apos;  =&gt; &apos;123456&apos;,        // 连接的密码</span><br><span class="line">  );</span><br></pre></td></tr></table></figure></p>
+<p>二、建立数据库连接<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$mysqli = @new mysqli($mysql_conf[&apos;host&apos;], $mysql_conf[&apos;db_user&apos;], $mysql_conf[&apos;db_pwd&apos;]);</span><br></pre></td></tr></table></figure></p>
+<p>三、连接失败问题的判断处理</p>
+<p>&emsp;&emsp;在说到连接问题之前，先介绍两个函数</p>
+<p>&emsp;1. $mysqli-&gt;connect_errno()函数，这个是检查PHP是否连接上MYSQL，就是一个判断函数，具体用法如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if ($mysqli-&gt;connect_errno) &#123;</span><br><span class="line">  die(&quot;could not connect to the database:\n&quot; . $mysqli-&gt;connect_error);     // 诊断连接错误</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>&emsp;2. $mysqli-&gt;select_db()函数，用于更改连接的默认数据库，语法为mysqli_select_db(connection,dbname); </p>
+<p>&emsp;这里遇到一个问题，函数mysqli_select_db有两个参数况且都是必须的，这里只用了一个dbname参数就完成了连接，问题先放放，明天解决。连接数据库代码如下：<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">  $mysqli-&gt;query(&quot;set names &apos;utf8&apos;;&quot;);//编码转化</span><br><span class="line">  $select_db = $mysqli-&gt;select_db($mysql_conf[&apos;db&apos;]);</span><br><span class="line"></span><br><span class="line">  if (!$select_db) &#123;</span><br><span class="line">    die(&quot;could not connect to the db:\n&quot; .  $mysqli-&gt;error);    // 处理连接失败情况</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="baoming-php文件的实现"><a href="#baoming-php文件的实现" class="headerlink" title="baoming.php文件的实现"></a>baoming.php文件的实现</h2><p>&emsp;&emsp;刚才在html文件中是通过http.post发送给了baoming.php报名信息的，这里要在baoming中进行处理信息并放入数据库<br>一、首先引入connect.php，不连接数据库怎么搞都没有意义<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">include(&apos;connect.php&apos;);</span><br></pre></td></tr></table></figure></p>
+<p>二、获取报名信息<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$name=$_POST[&apos;name&apos;];</span><br><span class="line">$num=$_POST[&apos;num&apos;];</span><br><span class="line">$intro=$_POST[&apos;intro&apos;];</span><br></pre></td></tr></table></figure></p>
+<p>三、向数据库student的naxin表中insert报名信息<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> // 首先判断name是否为空，从而判断信息有无，一般这里name都是可以获取到的，因为在html文件中已经设置了如果name为空返回重填</span><br><span class="line"> if($name)&#123;</span><br><span class="line">       // 插入语句</span><br><span class="line">    $sql=&quot;insert into naxin values (&apos;$name&apos;,&apos;$num&apos;，&apos;$intro&apos;);&quot;;</span><br><span class="line">       // 执行sql语句，查询sql信息是否存在</span><br><span class="line">	$res = $mysqli-&gt;query($sql);</span><br><span class="line">	if($res)&#123;</span><br><span class="line">		echo &apos;0&apos;;</span><br><span class="line">		return;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		echo &apos;erro&apos;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;else</span><br><span class="line">&#123;</span><br><span class="line">	echo &apos;erro&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>综上所述，完成了将网页输入信息存放至本地数据库naxin表中。</strong></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/27/Oracle和Mysql的区别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">The difference between Oracle and MySQ</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 Shi Zuocheng
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
