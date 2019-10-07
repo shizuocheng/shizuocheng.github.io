@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+  <title>Robberies——非常规背包问题 | 漫步Dog</title>
+
+  <!-- keywords -->
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Problem DescriptionThe aspiring Roy the Robber has seen a lot of American movies, and knows that the bad guys usually gets caught in the end, often because they become too greedy. He has decided to wo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Robberies——非常规背包问题">
+<meta property="og:url" content="http://yoursite.com/2019/10/07/一个背包问题/index.html">
+<meta property="og:site_name" content="漫步Dog">
+<meta property="og:description" content="Problem DescriptionThe aspiring Roy the Robber has seen a lot of American movies, and knows that the bad guys usually gets caught in the end, often because they become too greedy. He has decided to wo">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-10-07T15:11:40.811Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Robberies——非常规背包问题">
+<meta name="twitter:description" content="Problem DescriptionThe aspiring Roy the Robber has seen a lot of American movies, and knows that the bad guys usually gets caught in the end, often because they become too greedy. He has decided to wo">
+  
+    <link rel="alternative" href="/atom.xml" title="漫步Dog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="http://7xkj1z.com1.z0.glb.clouddn.com/head.jpg">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+  
+
+  <script src="//cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+  <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+
+  
+      <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+<script>AV.initialize("your_app_id", "your_app_key");</script>
+<script src="/js/Counter.js"></script>
+  
+</head></html>
+<body>
+  <div id="container">
+    <div id="particles-js"></div>
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/img/author.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Shi Zuocheng</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Shi zuocheng&#39;s personal blog</p>
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>菜单</li>
+						<li>标签</li>
+						
+						<li>友情链接</li>
+						
+						
+						<li>关于我</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="weibo" target="_blank" href="https://weibo.com/6036131467/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+					        
+								<a class="qq" target="_blank" href="https://www.shizuocheng.top/shi" title="qq">qq</a>
+					        
+								<a class="mail" target="_blank" href="#" title="mail">mail</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="https://www.shizuocheng.top/shi/">Website</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">小菜狗一枚&lt;br&gt; &lt;br&gt; 这个网站只是个人学习笔记，如有错误欢迎指点。</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Shi Zuocheng</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img lazy-src="/img/author.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Shi Zuocheng</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Shi zuocheng&#39;s personal blog</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="weibo" target="_blank" href="https://weibo.com/6036131467/profile?rightmod=1&wvr=6&mod=personinfo&is_all=1" title="weibo">weibo</a>
+			        
+						<a class="qq" target="_blank" href="https://www.shizuocheng.top/shi" title="qq">qq</a>
+			        
+						<a class="mail" target="_blank" href="#" title="mail">mail</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+      <div class="body-wrap"><article id="post-一个背包问题" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2019/10/07/一个背包问题/" class="article-date">
+  	<time datetime="2019-10-07T12:26:45.000Z" itemprop="datePublished">2019-10-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Robberies——非常规背包问题
+      
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        
+          
+<div class="counter-tag counter">
+    <span id="/2019/10/07/一个背包问题/" class="leancloud_visitors post-title-link"
+          style="font-size: 12px" data-flag-title="Robberies——非常规背包问题">
+         &nbsp;
+        view
+    </span>
+</div>
+
+        
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Problem-Description"><a href="#Problem-Description" class="headerlink" title="Problem Description"></a>Problem Description</h3><p>The aspiring Roy the Robber has seen a lot of American movies, and knows that the bad guys usually gets caught in the end, often because they become too greedy. He has decided to work in the lucrative business of bank robbery only for a short while, before retiring to a comfortable job at a university.</p>
+<h3 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h3><p>The first line of input gives T, the number of cases. For each scenario, the first line of input gives a floating point number P, the probability Roy needs to be below, and an integer N, the number of banks he has plans for. Then follow N lines, where line j gives an integer Mj and a floating point number Pj .<br>Bank j contains Mj millions, and the probability of getting caught from robbing it is Pj .</p>
+<h3 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h3><p>For each test case, output a line with the maximum number of millions he can expect to get while the probability of getting caught is less than the limit set.</p>
+<a id="more"></a>
+<p>Notes and Constraints<br>0 &lt; T &lt;= 100<br>0.0 &lt;= P &lt;= 1.0<br>0 &lt; N &lt;= 100<br>0 &lt; Mj &lt;= 100<br>0.0 &lt;= Pj &lt;= 1.0<br>A bank goes bankrupt if it is robbed, and you may assume that all probabilities are independent as the police have very low funds.</p>
+<h3 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h3><p>3<br>0.04 3<br>1 0.02<br>2 0.03<br>3 0.05<br>0.06 3<br>2 0.03<br>2 0.03<br>3 0.05<br>0.10 3<br>1 0.03<br>2 0.02<br>3 0.05</p>
+<h3 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h3><p>2<br>4<br>6</p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><pre><code>有一个强盗要去几个银行偷盗，他既想多投点钱，又想尽量不被抓到。已知各个银行的金钱数和被抓的概率，以及强盗能容忍的最大被抓概率。求他最多能偷到多少钱？</code></pre><h3 id="Input-1"><a href="#Input-1" class="headerlink" title="Input"></a>Input</h3><pre><code>N个情况、每个情况都有最大被抓概率P和银行个数n，接下来n行输入n个银行的金钱数m和被抓的概率p</code></pre><h3 id="Output-1"><a href="#Output-1" class="headerlink" title="Output"></a>Output</h3><pre><code>小于P的情况下最大能偷到的钱数</code></pre><hr>
+<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>&emsp;&emsp;背包问题，原先想的是把概率当做背包，在这个范围内最多能抢多少钱，但是问题出在概率这里：</p>
+<p>一、因为概率是浮点数，用作背包必须扩大10^n倍来用。</p>
+<p>二、最大不被抓概率不是简单的累加。p = (1-p1)(1-p2)(1-p3) 其中p为最大不被抓概率，p1，p2，p3为各个银行被抓概率。</p>
+<h3 id="这里如果换一种思路："><a href="#这里如果换一种思路：" class="headerlink" title="这里如果换一种思路："></a>这里如果换一种思路：</h3><p>&emsp;&emsp;把银行的钱当做背包，把概率当做价值，总容量为所有银行的总钱数，求不超过被抓概率的情况下，最大的背包容量是多少, f[j] = max(f[j],f[j-Mj[i]]*(1-Pj[i]))    //f[j]表示偷到j块钱逃跑的概率</p>
+<h3 id="具体实现："><a href="#具体实现：" class="headerlink" title="具体实现："></a>具体实现：</h3><p>一、因为是用银行的钱数来当背包，故我们应该先获取总钱数sum<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">int sum=0;</span><br><span class="line">for(int i=1;i&lt;=N;i++)</span><br><span class="line">&#123;</span><br><span class="line"> cin&gt;&gt;Mj[i]&gt;&gt;Pj[i];</span><br><span class="line"> sum += Mj[i]; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  二、获取抢到钱在区间[0,sum]中各万元后，能跑的概率<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">memset(f,0,sizeof(f));</span><br><span class="line">f[0] = 1;</span><br><span class="line">for(int i=1;i&lt;=N;i++)</span><br><span class="line">&#123;</span><br><span class="line"> for(int j=sum;j&gt;=Mj[i];j--)</span><br><span class="line"> &#123;</span><br><span class="line"> 	  f[j] = max(f[j],f[j-Mj[i]]*(1-Pj[i]));   //f[j]表示在被抢概率j之下能抢的钱</span><br><span class="line"> &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>  三、根据题目所问，写一个sum到0的循环找出抢到[0 , sum]区间中哪个点是刚好能跑<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">int flag=0;</span><br><span class="line">for(int k=sum;k&gt;=0;k--)</span><br><span class="line">&#123;</span><br><span class="line"> if(f[k]&gt;=(1-P))</span><br><span class="line"> &#123;</span><br><span class="line">  flag = k;</span><br><span class="line">  break;</span><br><span class="line"> &#125; </span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;flag&lt;&lt;endl;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/09/29/背包诠释/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一个很好理解01背包原理的故事</div>
+      <strong class="article-nav-caption">&gt;</strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+      <div class="footer-left">
+        &copy; 2019 Shi Zuocheng
+      </div>
+        <div class="footer-right">
+          <a href="http://hexo.io/" target="_blank">Hexo</a>
+        </div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="/js/main.js"></script>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js"></script>
+
+
+  </div>
+</body>
+</html>
